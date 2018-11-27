@@ -63,7 +63,6 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
    }
   
     render() {
-
       const title = this.state.title;
       return(
         <div>
