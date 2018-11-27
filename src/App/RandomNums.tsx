@@ -6,6 +6,7 @@ interface MyComponentProps {
 
 interface MyComponentState {
   stateNums: Array<number>
+  title: string
 }
 
 export class RandomNums extends React.Component<MyComponentProps,MyComponentState> {
@@ -16,13 +17,17 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
       this.numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49];
       
       this.state = {
-        stateNums: this.props.someArray
+        stateNums: this.props.someArray,
+        title: ''
       }
     }
     
   drawNumbers = () => {
     const xxx = this.pickNumbers(this.numbers);
-    this.setState({ stateNums: xxx })
+    this.setState({ 
+      stateNums: xxx,
+      title: "Your drawed numbers:" 
+    })
   }
     
   pickNumbers = (tablica: Array<number>) => {
@@ -58,12 +63,13 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
    }
   
     render() {
+
+      const title = this.state.title;
       return(
         <div>
-          <h3>Draw 6 numbers from box</h3>
-          <button onClick={this.drawNumbers}>press to draw</button>
-          <p>Drawed numbers</p>    
-           <NumbersList nums={this.state.stateNums} />
+          <h2>Draw 6 numbers from box</h2>
+          <button onClick={this.drawNumbers}>press to draw</button>   
+           <NumbersList nums={this.state.stateNums} title={title} />
         </div>
       )
     }
@@ -71,14 +77,18 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
   
   interface NumberListPropsType{
     nums: Array<number>
+    title: string
   }
 
   class NumbersList extends React.Component<NumberListPropsType> {
     render(){
       return (
-        <div>
-        {this.props.nums.map(el => <div key={el} style={{ display: "inline-block", marginRight:"10px" }}>{el}</div>)}
+        <React.Fragment>
+          <h2>{this.props.title}</h2> 
+          <div className="rows">
+            {this.props.nums.map(el => <div key={el} style={{ display: "inline-block", marginRight:"10px" }}>{el}</div>)}
         </div>
+        </React.Fragment>
       );
     }
   }
