@@ -33,31 +33,31 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
   pickNumbers = (tablica: Array<number>) => {
     const newTab = []
     
-    let randomNum1 = Math.floor(Math.random()*tablica.length);
+    let randomNum1 = Math.floor(Math.random() * tablica.length);
     newTab.push(tablica[randomNum1]);
     tablica = tablica.filter(el => el !== tablica[randomNum1])
     
-    let randomNum2 = Math.floor(Math.random()*tablica.length)
+    let randomNum2 = Math.floor(Math.random() * tablica.length)
     newTab.push(tablica[randomNum2]);
     tablica = tablica.filter(el => el !== tablica[randomNum2])
     
-    let randomNum3 = Math.floor(Math.random()*tablica.length)
+    let randomNum3 = Math.floor(Math.random() * tablica.length)
     newTab.push(tablica[randomNum3]);
     tablica = tablica.filter(el => el !== tablica[randomNum3])
     
-    let randomNum4 = Math.floor(Math.random()*tablica.length);
+    let randomNum4 = Math.floor(Math.random() * tablica.length);
     newTab.push(tablica[randomNum4]);
     tablica = tablica.filter(el => el !== tablica[randomNum4])
     
-    let randomNum5 = Math.floor(Math.random()*tablica.length);
+    let randomNum5 = Math.floor(Math.random() * tablica.length);
     newTab.push(tablica[randomNum5]);
     tablica = tablica.filter(el => el !== tablica[randomNum5])
     
-    let randomNum6 = Math.floor(Math.random()*tablica.length);
+    let randomNum6 = Math.floor(Math.random() * tablica.length);
     newTab.push(tablica[randomNum6]);
     tablica = tablica.filter(el => el !== tablica[randomNum6])
   
-    newTab.sort( (function(a, b){return a - b}) );
+    newTab.sort( ( function(a, b){ return a - b} ) );
     
     return newTab;
    }
@@ -85,7 +85,7 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
         <React.Fragment>
           <h2>{this.props.title}</h2> 
           <div className="rows">
-            {this.props.nums.map(el => <div key={el} style={{ display: "inline-block", marginRight:"10px" }}>{el}</div>)}
+            { this.props.nums.map(el => <div key={el} style={{ display: "inline-block", marginRight:"10px" }}> {el} </div>) }
         </div>
         </React.Fragment>
       );
