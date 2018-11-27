@@ -1,13 +1,11 @@
 import * as React from 'react';
 
-
 interface MyComponentProps {
   someArray: Array<number>
 }
 
 interface MyComponentState {
   stateNums: Array<number>
-  
 }
 
 export class RandomNums extends React.Component<MyComponentProps,MyComponentState> {
@@ -24,8 +22,6 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
     
   drawNumbers = () => {
     const xxx = this.pickNumbers(this.numbers);
-    console.log("metoda zwraca",xxx)
-    //return xxx;
     this.setState({ stateNums: xxx })
   }
     
@@ -62,7 +58,6 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
    }
   
     render() {
-      
       return(
         <div>
           <h3>Draw 6 numbers from box</h3>
@@ -82,11 +77,9 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
     render(){
       return (
         <div>
-        {this.props.nums.map(el => <div key={el} style={{display: "inline-block",marginRight:"10px"}}>{el}</div>)}
+        {this.props.nums.map(el => <div key={el} style={{ display: "inline-block", marginRight:"10px" }}>{el}</div>)}
         </div>
       );
     }
   }
   
-
-//export default RandomNumbers;
