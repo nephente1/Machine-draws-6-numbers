@@ -23,9 +23,9 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
     }
     
   drawNumbers = () => {
-    const xxx = this.pickNumbers(this.numbers);
+    const drawedNums = this.pickNumbers(this.numbers);
     this.setState({ 
-      stateNums: xxx,
+      stateNums: drawedNums,
       title: "Your drawed numbers:" 
     })
   }
