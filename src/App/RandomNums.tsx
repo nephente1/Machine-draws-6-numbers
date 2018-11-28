@@ -65,7 +65,7 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
     render() {
       const title = this.state.title;
       return(
-        <div>
+        <div className="mainSection">
           <h2>Draw 6 numbers from box</h2>
           <button onClick={this.drawNumbers}>press to draw</button>   
            <NumbersList nums={this.state.stateNums} title={title} />
@@ -85,7 +85,7 @@ export class RandomNums extends React.Component<MyComponentProps,MyComponentStat
         <React.Fragment>
           <h2>{this.props.title}</h2> 
           <div className="rows">
-            { this.props.nums.map(el => <div key={el} style={{ display: "inline-block", marginRight:"10px" }}> {el} </div>) }
+            { this.props.nums.map(el => <div key={el} className="circle"> {el} </div>) }
         </div>
         </React.Fragment>
       );
