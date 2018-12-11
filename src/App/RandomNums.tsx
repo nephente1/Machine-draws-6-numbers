@@ -1,67 +1,58 @@
 import * as React from 'react';
 
-interface MyComponentProps {
-  someArray: Array<number>
-}
-
 interface MyComponentState {
   stateNums: Array<number>
-  title: string
+  title: string,
 }
 
-export class RandomNums extends React.Component<MyComponentProps,MyComponentState> {
-    numbers:Array<number>;
+const policz = () => {
+  const tablicaCyfr = [];
+    for( let i = 1; i <= 49; i++){
+      tablicaCyfr.push(i);
+    }
+  console.log(tablicaCyfr)
+  return tablicaCyfr;
+}
+
+export class RandomNums extends React.Component<{},MyComponentState> {
     
-    constructor(props:MyComponentProps){
+    constructor(props: {}){
       super(props);
-      this.numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49];
       
       this.state = {
-        stateNums: this.props.someArray,
-        title: ''
+        stateNums: [],
+        title: '',
       }
     }
     
   drawNumbers = () => {
-    const drawedNums = this.pickNumbers(this.numbers);
     this.setState({ 
-      stateNums: drawedNums,
-      title: "Your drawed numbers:" 
+      stateNums: this.pickNumbers(),
+      title: "Your drawed numbers:",
     })
   }
     
-  pickNumbers = (tablica: Array<number>) => {
-    const newTab = []
-    
-    let randomNum1 = Math.floor(Math.random() * tablica.length);
-    newTab.push(tablica[randomNum1]);
-    tablica = tablica.filter(el => el !== tablica[randomNum1])
-    
-    let randomNum2 = Math.floor(Math.random() * tablica.length)
-    newTab.push(tablica[randomNum2]);
-    tablica = tablica.filter(el => el !== tablica[randomNum2])
-    
-    let randomNum3 = Math.floor(Math.random() * tablica.length)
-    newTab.push(tablica[randomNum3]);
-    tablica = tablica.filter(el => el !== tablica[randomNum3])
-    
-    let randomNum4 = Math.floor(Math.random() * tablica.length);
-    newTab.push(tablica[randomNum4]);
-    tablica = tablica.filter(el => el !== tablica[randomNum4])
-    
-    let randomNum5 = Math.floor(Math.random() * tablica.length);
-    newTab.push(tablica[randomNum5]);
-    tablica = tablica.filter(el => el !== tablica[randomNum5])
-    
-    let randomNum6 = Math.floor(Math.random() * tablica.length);
-    newTab.push(tablica[randomNum6]);
-    tablica = tablica.filter(el => el !== tablica[randomNum6])
-  
-    newTab.sort( ( function(a, b){ return a - b} ) );
-    
-    return newTab;
+  pickNumbers = () => {
+    const wylosowaneLiczby: Array<number> = [];
+    let tablica = policz();
+
+    for( let i = 0; i < 6; i++ ){
+        const index = Math.floor(Math.random() * tablica.length);
+        const randomNum = tablica[index];
+
+        wylosowaneLiczby.push(randomNum);
+
+        tablica = tablica.filter( (el) => el !== randomNum);
+
+        console.log('tablica',tablica)
+        console.log(wylosowaneLiczby,'z petli')
+    }
+
+    wylosowaneLiczby.sort( ( function(a, b){ return a - b} ) );
+    console.log('newTab',wylosowaneLiczby)
+    return wylosowaneLiczby;
    }
-  
+
     render() {
       const title = this.state.title;
       return(
